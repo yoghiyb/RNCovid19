@@ -1,0 +1,15 @@
+globe-asia
+hubspot
+haykal
+earth
+skull
+md-globe
+
+
+font :
+- card = roboto, 18
+
+warna
+hitam : 202C44
+abu : 99A6CD
+hijau : 67C57B
