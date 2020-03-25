@@ -2,7 +2,7 @@
 
 Aplikasi untuk moitoring perkembangan virus covid19 di indonesia
 
-## cara install :
+## How to install :
 
 ```bash
     git clone https://github.com/yoghiyb/RNCovid19.git
