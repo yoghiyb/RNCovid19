@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Dimensions, StyleSheet, Animated, ScrollView, Image, Picker, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, Animated, ScrollView, Image, Picker, TouchableOpacity, ActivityIndicator, Alert } from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import FA5 from 'react-native-vector-icons/FontAwesome5'
 import axios from 'axios'
@@ -7,11 +7,13 @@ import Card from './Card'
 
 const { width, height } = Dimensions.get('window')
 
-const HEADER_MAX_HEIGHT = height / 3
+const HEADER_MAX_HEIGHT = height / 2.8
 const HEADER_MIN_HEIGHT = 0
 const MAX_BORDER_RADIUS = 50
 const MIN_BORDER_RADIUS = 0
 const TITLE_MAX_HEIGHT = HEADER_MAX_HEIGHT / 4
+
+const calcHeight = height - HEADER_MAX_HEIGHT
 
 const Kasus = () => {
 
@@ -122,8 +124,12 @@ const Kasus = () => {
                 onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: scrollY } } }]
                 )}
+                onContentSizeChange={(width, height) => {
+                    // console.log(width, height);
+                }}
             >
                 <Animated.View style={{
+                    // height: calcHeight ,
                     backgroundColor: '#f7fbff',
                     borderTopStartRadius: borderRadiusContent,
                     borderTopEndRadius: borderRadiusContent,
@@ -175,10 +181,12 @@ const Kasus = () => {
                                 <Text style={{
                                     color: 'gray',
                                 }} >Terakhir diupdate {hari != null ? getLastDays() : null}</Text>
-                                <TouchableOpacity style={{
-                                    flexDirection: "row",
-                                    alignItems: "center"
-                                }} >
+                                <TouchableOpacity
+                                    onPress={() => Alert.alert('', 'Coming Soon')}
+                                    style={{
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }} >
                                     <Text style={{ color: '#67C57B', marginRight: 5 }} >Lihat Detail</Text>
                                     <FA5 name="angle-right" color={"#67C57B"} size={14} />
                                 </TouchableOpacity>

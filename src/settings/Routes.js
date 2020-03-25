@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Kasus, Informasi, Bantuan } from '../components'
+import { Kasus, Informasi, Bantuan, About } from '../components'
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
 import FoundationIcon from 'react-native-vector-icons/Foundation'
 const Routes = () => {
 
     const Tab = createBottomTabNavigator();
 
-    return (
-        <NavigationContainer>
+    const Home = () => {
+        return (
             <Tab.Navigator
                 tabBarOptions={{
                     activeTintColor: 'green',
@@ -39,6 +40,17 @@ const Routes = () => {
                 <Tab.Screen name="Informasi" component={Informasi} />
                 <Tab.Screen name="Bantuan" component={Bantuan} />
             </Tab.Navigator>
+        )
+    }
+
+    const Stack = createStackNavigator();
+
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }} >
+                <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen name="About" component={About} options={{ headerShown: true, title: 'About' }} />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 }

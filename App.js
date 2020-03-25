@@ -29,6 +29,7 @@ const App = () => {
   return (
     <>
       <View style={{ flex: 1 }} >
+        <StatusBar backgroundColor="#1aa180" barStyle="light-content" />
         <Routes />
       </View>
     </>

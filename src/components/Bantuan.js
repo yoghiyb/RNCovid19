@@ -13,9 +13,11 @@ const MAX_BORDER_RADIUS = 50
 const MIN_BORDER_RADIUS = 0
 const TITLE_MAX_HEIGHT = HEADER_MAX_HEIGHT / 4
 
+const calcHeight = height - HEADER_MAX_HEIGHT
+
 const BACKGROUND_ICON_SIZE = 50
 
-const Bantuan = () => {
+const Bantuan = ({ navigation }) => {
     const scrollY = new Animated.Value(0)
     const [loading, setLoading] = useState(false)
     const [data, setData] = useState(null)
@@ -28,7 +30,7 @@ const Bantuan = () => {
         getData()
         setLoading(false)
     }, [])
-    console.log('parent')
+    // console.log('parent')
 
     const headerHeight = scrollY.interpolate(
         {
@@ -92,9 +94,12 @@ const Bantuan = () => {
                 onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: scrollY } } }]
                 )}
+                onContentSizeChange={(width, height) => {
+
+                }}
             >
                 <Animated.View style={{
-                    height: null,
+                    height: calcHeight + 10,
                     backgroundColor: '#f7fbff',
                     borderTopStartRadius: borderRadiusContent,
                     borderTopEndRadius: borderRadiusContent,
@@ -173,6 +178,7 @@ const Bantuan = () => {
                                 flexDirection: "row",
                                 zIndex: 10,
                             }} >
+
                                 <View style={{
                                     width: BACKGROUND_ICON_SIZE,
                                     height: BACKGROUND_ICON_SIZE,
@@ -184,33 +190,33 @@ const Bantuan = () => {
                                 }} >
                                     <FA5 name="info-circle" size={BACKGROUND_ICON_SIZE / 2} color={'dodgerblue'} />
                                 </View>
-
-                                <View style={{
-                                    justifyContent: 'space-between',
-                                    alignItems: "center",
-                                    flexDirection: "row",
-                                    // backgroundColor: 'blue',
-                                    width: width - 150
-                                }} >
-                                    <Text style={{ fontSize: 20, fontWeight: 'bold' }} >About</Text>
+                                <TouchableOpacity onPress={() => navigation.navigate('About')} >
                                     <View style={{
-                                        width: BACKGROUND_ICON_SIZE / 2,
-                                        height: BACKGROUND_ICON_SIZE / 2,
-                                        borderRadius: BACKGROUND_ICON_SIZE / 2,
-                                        backgroundColor: '#d9d9d9',
-                                        justifyContent: 'center',
-                                        alignItems: 'center'
+                                        justifyContent: 'space-between',
+                                        alignItems: "center",
+                                        flexDirection: "row",
+                                        // backgroundColor: 'blue',
+                                        width: width - 150
                                     }} >
-                                        <IOIcon name={'ios-arrow-forward'} size={24} color={'gray'} />
+                                        <Text style={{ fontSize: 20, fontWeight: 'bold' }} >About</Text>
+                                        <View style={{
+                                            width: BACKGROUND_ICON_SIZE / 2,
+                                            height: BACKGROUND_ICON_SIZE / 2,
+                                            borderRadius: BACKGROUND_ICON_SIZE / 2,
+                                            backgroundColor: '#d9d9d9',
+                                            justifyContent: 'center',
+                                            alignItems: 'center'
+                                        }} >
+                                            <IOIcon name={'ios-arrow-forward'} size={24} color={'gray'} />
+                                        </View>
                                     </View>
-
-                                </View>
+                                </TouchableOpacity>
                             </View>
                         </View>
                     }
                 </Animated.View>
             </ScrollView>
-        </View>
+        </View >
     )
 }
 

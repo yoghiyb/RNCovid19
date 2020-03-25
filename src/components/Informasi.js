@@ -7,11 +7,13 @@ import Data from '../assets/data'
 
 const { width, height } = Dimensions.get('window')
 
-const HEADER_MAX_HEIGHT = height / 3
+const HEADER_MAX_HEIGHT = height / 2.8
 const HEADER_MIN_HEIGHT = 0
 const MAX_BORDER_RADIUS = 50
 const MIN_BORDER_RADIUS = 0
 const TITLE_MAX_HEIGHT = HEADER_MAX_HEIGHT / 4
+
+const calcHeight = height - HEADER_MAX_HEIGHT
 
 const Informasi = () => {
     const scrollY = new Animated.Value(0)
@@ -26,7 +28,7 @@ const Informasi = () => {
         getData()
         setLoading(false)
     }, [])
-    console.log('parent')
+    // console.log('parent')
 
     const headerHeight = scrollY.interpolate(
         {
@@ -92,7 +94,7 @@ const Informasi = () => {
                 )}
             >
                 <Animated.View style={{
-                    // height: loading ? 1000 : '',
+                    // height: calcHeight + 10,
                     backgroundColor: '#f7fbff',
                     borderTopStartRadius: borderRadiusContent,
                     borderTopEndRadius: borderRadiusContent,
