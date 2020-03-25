@@ -26,10 +26,10 @@ const Routes = () => {
                                 iconName = 'file-document'
                             } else if (route.name == 'Bantuan') {
                                 iconName = 'plus'
-                                return <FoundationIcon name={iconName} color={color} size={size} />
+                                return <FoundationIcon name={iconName} color={color} size={32} />
                             }
 
-                            return <MCI name={iconName} color={color} size={size} />
+                            return <MCI name={iconName} color={color} size={32} />
                         }
                     })
                 }
