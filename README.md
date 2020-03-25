@@ -11,3 +11,8 @@ Aplikasi untuk moitoring perkembangan virus covid19 di indonesia
 
     npx react-native run-android
 ```
+
+Design Application icons : 
+- [DinosoftLab](https://www.flaticon.com/authors/dinosoftlabs) from [www.flaticon.com](https://www.flaticon.com/)
+- [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)
+- [turkkub](https://www.flaticon.com/authors/turkkub) from [www.flaticon.com](https://www.flaticon.com/)
