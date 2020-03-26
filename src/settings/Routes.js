@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Kasus, Informasi, Bantuan, About } from '../components'
+import { Kasus, Informasi, Bantuan, About, DetailKasus, DetailProv, DataKasus } from '../components'
 import MCI from 'react-native-vector-icons/MaterialCommunityIcons'
 import FoundationIcon from 'react-native-vector-icons/Foundation'
 const Routes = () => {
@@ -50,6 +50,9 @@ const Routes = () => {
             <Stack.Navigator screenOptions={{ headerShown: false }} >
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name="About" component={About} options={{ headerShown: true, title: 'About' }} />
+                <Stack.Screen name="DetailKasus" component={DetailKasus} options={{ headerShown: true, title: 'Detail Kasus' }} />
+                <Stack.Screen name="DetailProv" component={DetailProv} options={{ headerShown: true, title: 'Kasus Berdasarkan Provinsi' }} />
+                <Stack.Screen name="DataKasus" component={DataKasus} options={{ headerShown: true, title: 'Data Kasus' }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

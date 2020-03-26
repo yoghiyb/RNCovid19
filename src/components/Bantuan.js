@@ -7,7 +7,7 @@ import Data from '../assets/data'
 
 const { width, height } = Dimensions.get('window')
 
-const HEADER_MAX_HEIGHT = height / 3
+const HEADER_MAX_HEIGHT = height / 2.8
 const HEADER_MIN_HEIGHT = 0
 const MAX_BORDER_RADIUS = 50
 const MIN_BORDER_RADIUS = 0
@@ -77,14 +77,14 @@ const Bantuan = ({ navigation }) => {
                             color: 'white',
                             fontWeight: 'bold',
                             fontFamily: 'Roboto'
-                        }} >Kami</Text>
+                        }} >Pusat</Text>
                         <Text style={{
                             marginTop: -20,
                             fontSize: 48,
                             color: 'white',
                             fontWeight: 'bold',
                             fontFamily: 'Roboto'
-                        }} >Siap Membantu</Text>
+                        }} >Bantuan</Text>
                     </Animated.View>
                 </Animated.View>
             </View>
@@ -118,7 +118,7 @@ const Bantuan = ({ navigation }) => {
                                 fontWeight: 'bold',
                                 marginTop: 10,
                             }}
-                            >Apa itu Virus Corona?</Text>
+                            >Pusat Bantuan</Text>
                             <View style={{
                                 marginTop: 20,
                                 backgroundColor: 'white',

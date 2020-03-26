@@ -51,7 +51,7 @@ const Informasi = () => {
             extrapolate: 'clamp'
         });
     return (
-        <View style={{ flex: 1 }} >
+        <View style={{ flex: 1, backgroundColor: '#f7fbff' }} >
             <View style={{ flex: 1, position: 'relative' }} >
                 <Animated.View style={{
                     position: 'absolute',

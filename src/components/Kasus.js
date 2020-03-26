@@ -15,7 +15,7 @@ const TITLE_MAX_HEIGHT = HEADER_MAX_HEIGHT / 4
 
 const calcHeight = height - HEADER_MAX_HEIGHT
 
-const Kasus = () => {
+const Kasus = ({ navigation }) => {
 
     const scrollY = new Animated.Value(0)
     const [location, handleLocation] = useState(null)
@@ -31,17 +31,33 @@ const Kasus = () => {
         // prettyDate(nasional.metadata.lastUpdatedAt)
     }
 
-    const apiWilayah = async () => {
-        let endpoint = `https://api.u9.nu/covid19?fbclid=IwAR3sGhD11zCYFvsB0u0NJjLm-XxZTif4Y27CGWpg4SDeCxuU_rfnUmanIxM`
+    // const apiWilayah = async () => {
+    //     let endpoint = `https://api.u9.nu/covid19?fbclid=IwAR3sGhD11zCYFvsB0u0NJjLm-XxZTif4Y27CGWpg4SDeCxuU_rfnUmanIxM`
+    //     let response = await axios.get(endpoint)
+    //     // console.log(response.data.wilayah)
+    //     setAllWilayah(response.data.wilayah)
+    //     setHari(response.data.nasional)
+    // }
+
+    const apiHarian = async () => {
+        let endpoint = `https://indonesia-covid-19.mathdro.id/api/harian`
         let response = await axios.get(endpoint)
-        // console.log(response.data.wilayah)
-        setAllWilayah(response.data.wilayah)
-        setHari(response.data.nasional)
+
+        setHari(response.data.data)
+    }
+
+    const apiProvinsi = async () => {
+        let endpoint = `https://indonesia-covid-19.mathdro.id/api/provinsi`
+        let response = await axios.get(endpoint)
+
+        setAllWilayah(response.data.data)
     }
 
     useEffect(() => {
         handleLoading(true)
-        apiWilayah()
+        // apiWilayah()
+        apiHarian()
+        apiProvinsi()
         apiNasional()
         handleLoading(false)
         // console.log(nasional)
@@ -75,13 +91,15 @@ const Kasus = () => {
     }
 
     const getLastDays = () => {
+        // let filtered = hari.filter(h => h.presentase_sembuh != null)
         let lastDays = hari[hari.length - 1]
         let date = new Date(lastDays.tanggal)
         let lastDate = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear()
+        // console.log(lastDate)
         return lastDate
     }
 
-    // console.log(location)
+    console.log(hari, allWilayah)
     return (
         <View style={{ flex: 1 }} >
             <View style={{ flex: 1, position: 'relative' }} >
@@ -138,8 +156,9 @@ const Kasus = () => {
                 }}>
                     {loading ?
                         <ActivityIndicator size="large" color="#0000ff" style={{
-                            position: 'absolute',
-                            top: HEADER_MAX_HEIGHT
+                            // position: 'absolute',
+                            // top: HEADER_MAX_HEIGHT
+                            height: height / 1.5
                         }} />
                         : <View>
                             {/* Picker untuk lokasi */}
@@ -181,22 +200,26 @@ const Kasus = () => {
                                 <Text style={{
                                     color: 'gray',
                                 }} >Terakhir diupdate {hari != null ? getLastDays() : null}</Text>
-                                <TouchableOpacity
-                                    onPress={() => Alert.alert('', 'Coming Soon')}
-                                    style={{
-                                        flexDirection: "row",
-                                        alignItems: "center"
-                                    }} >
-                                    <Text style={{ color: '#67C57B', marginRight: 5 }} >Lihat Detail</Text>
-                                    <FA5 name="angle-right" color={"#67C57B"} size={14} />
-                                </TouchableOpacity>
+                                {
+                                    nasional == null ?
+                                        null
+                                        : <TouchableOpacity
+                                            onPress={() => navigation.navigate('DetailKasus', { nasional })}
+                                            style={{
+                                                flexDirection: "row",
+                                                alignItems: "center"
+                                            }} >
+                                            <Text style={{ color: '#67C57B', marginRight: 5 }} >Lihat Detail</Text>
+                                            <FA5 name="angle-right" color={"#67C57B"} size={14} />
+                                        </TouchableOpacity>
+                                }
                             </View>
 
                             {
                                 location != null ?
-                                    <MemoizedCard mt={20} positif={location.positif} sembuh={location.sembuh} meninggal={location.meninggal} />
+                                    <MemoizedCard mt={20} positif={location.kasusPosi} sembuh={location.kasusSemb} meninggal={location.kasusMeni} />
                                     :
-                                    <ActivityIndicator size="large" color="#0000ff" />
+                                    <ActivityIndicator size="large" color="#0000ff" style={{ marginTop: 50 }} />
                             }
 
                             <Text style={{
@@ -218,7 +241,7 @@ const Kasus = () => {
                                 nasional != null ?
                                     <MemoizedCard mt={10} positif={nasional.confirmed.value} sembuh={nasional.recovered.value} meninggal={nasional.deaths.value} />
                                     :
-                                    <ActivityIndicator size="large" color="#0000ff" />
+                                    <ActivityIndicator size="large" color="#0000ff" style={{ marginTop: 50 }} />
                             }
                         </View>
                     }

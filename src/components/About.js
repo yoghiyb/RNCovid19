@@ -68,6 +68,18 @@ const About = ({ navigation }) => {
                     <Text style={{ color: 'dodgerblue' }} >www.flaticon.com</Text>
                 </TouchableOpacity>
             </View>
+            <View style={{ flexDirection: "row" }} >
+                <TouchableOpacity
+                    onPress={() => { Linking.openURL('https://www.flaticon.com/authors/pixelmeetup') }} >
+                    <Text style={{ color: 'dodgerblue' }} >Pixelmeetup </Text>
+                </TouchableOpacity>
+                <Text style={{}} >from </Text>
+                <TouchableOpacity
+                    onPress={() => { Linking.openURL('https://www.flaticon.com/') }}
+                >
+                    <Text style={{ color: 'dodgerblue' }} >www.flaticon.com</Text>
+                </TouchableOpacity>
+            </View>
 
             <Text style={{ marginTop: 50, fontSize: 32, fontStyle: 'italic' }} >#DirumahAja</Text>
         </View>
