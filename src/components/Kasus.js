@@ -34,7 +34,7 @@ const Kasus = ({ navigation }) => {
     // const apiWilayah = async () => {
     //     let endpoint = `https://api.u9.nu/covid19?fbclid=IwAR3sGhD11zCYFvsB0u0NJjLm-XxZTif4Y27CGWpg4SDeCxuU_rfnUmanIxM`
     //     let response = await axios.get(endpoint)
-    //     // console.log(response.data.wilayah)
+
     //     setAllWilayah(response.data.wilayah)
     //     setHari(response.data.nasional)
     // }
@@ -50,7 +50,9 @@ const Kasus = ({ navigation }) => {
         let endpoint = `https://indonesia-covid-19.mathdro.id/api/provinsi`
         let response = await axios.get(endpoint)
 
-        setAllWilayah(response.data.data)
+        let filtered = await response.data.data.filter(item => item.provinsi != 'Indonesia')
+
+        setAllWilayah(filtered)
     }
 
     useEffect(() => {
@@ -60,7 +62,7 @@ const Kasus = ({ navigation }) => {
         apiProvinsi()
         apiNasional()
         handleLoading(false)
-        // console.log(nasional)
+
     }, [])
 
     const headerHeight = scrollY.interpolate(
@@ -95,11 +97,10 @@ const Kasus = ({ navigation }) => {
         let lastDays = hari[hari.length - 1]
         let date = new Date(lastDays.tanggal)
         let lastDate = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear()
-        // console.log(lastDate)
+
         return lastDate
     }
 
-    console.log(hari, allWilayah)
     return (
         <View style={{ flex: 1 }} >
             <View style={{ flex: 1, position: 'relative' }} >
@@ -143,7 +144,7 @@ const Kasus = ({ navigation }) => {
                     [{ nativeEvent: { contentOffset: { y: scrollY } } }]
                 )}
                 onContentSizeChange={(width, height) => {
-                    // console.log(width, height);
+
                 }}
             >
                 <Animated.View style={{
@@ -200,19 +201,15 @@ const Kasus = ({ navigation }) => {
                                 <Text style={{
                                     color: 'gray',
                                 }} >Terakhir diupdate {hari != null ? getLastDays() : null}</Text>
-                                {
-                                    nasional == null ?
-                                        null
-                                        : <TouchableOpacity
-                                            onPress={() => navigation.navigate('DetailKasus', { nasional })}
-                                            style={{
-                                                flexDirection: "row",
-                                                alignItems: "center"
-                                            }} >
-                                            <Text style={{ color: '#67C57B', marginRight: 5 }} >Lihat Detail</Text>
-                                            <FA5 name="angle-right" color={"#67C57B"} size={14} />
-                                        </TouchableOpacity>
-                                }
+                                <TouchableOpacity
+                                    onPress={nasional == null ? null : () => navigation.navigate('DetailKasus', { nasional })}
+                                    style={{
+                                        flexDirection: "row",
+                                        alignItems: "center"
+                                    }} >
+                                    <Text style={{ color: nasional == null ? 'gray' : '#67C57B', marginRight: 5 }} >Lihat Detail</Text>
+                                    <FA5 name="angle-right" color={nasional == null ? "gray" : "#67C57B"} size={14} />
+                                </TouchableOpacity>
                             </View>
 
                             {

@@ -20,8 +20,6 @@ const CardProfile = ({ gender, klaster, umur, status, wn }) => {
 
     let clr = statusColor(status)
 
-    console.log(wn)
-
     return (
         <View style={{
             marginVertical: 10,

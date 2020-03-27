@@ -30,7 +30,6 @@ const Bantuan = ({ navigation }) => {
         getData()
         setLoading(false)
     }, [])
-    // console.log('parent')
 
     const headerHeight = scrollY.interpolate(
         {
@@ -114,11 +113,21 @@ const Bantuan = ({ navigation }) => {
                         : <View>
                             <Text style={{
                                 fontSize: 26,
-                                marginHorizontal: 14,
+                                // marginHorizontal: 10,
                                 fontWeight: 'bold',
                                 marginTop: 10,
                             }}
                             >Pusat Bantuan</Text>
+                            <View style={{ flexDirection: "row" }} >
+                                <Text style={{ color: 'gray', fontSize: 16 }} >Jika anda mengalami gejala-gejala </Text>
+                                <TouchableOpacity onPress={() => navigation.navigate('Informasi')} >
+                                    <Text style={{
+                                        color: 'green',
+                                        fontSize: 16
+                                    }} >seperti ini.</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <Text style={{ color: 'gray', fontSize: 16 }} >Silahkan hubungi kontak dibawah.</Text>
                             <View style={{
                                 marginTop: 20,
                                 backgroundColor: 'white',

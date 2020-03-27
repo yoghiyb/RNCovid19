@@ -31,7 +31,7 @@ const Data = [
         bgImageColor: '#f0ffff',
         title: "Mengantisipasi",
         data: {
-            title: "Covid-19",
+            title: "Cooming Soon",
             text: ""
         }
     }

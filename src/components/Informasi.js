@@ -28,7 +28,7 @@ const Informasi = () => {
         getData()
         setLoading(false)
     }, [])
-    // console.log('parent')
+
 
     const headerHeight = scrollY.interpolate(
         {

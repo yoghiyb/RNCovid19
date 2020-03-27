@@ -7,7 +7,7 @@ const { width, height } = Dimensions.get('window')
 const BACKGROUND_ICON_SIZE = 50
 
 const Accordion = ({ image, bgImageColor, title, data }) => {
-    console.log(bgImageColor)
+
     const test = bgImageColor
     const [expanded, setExpanded] = useState(false)
 
@@ -15,7 +15,7 @@ const Accordion = ({ image, bgImageColor, title, data }) => {
 
     }, [])
 
-    console.log('child')
+
     return (
         <View >
             <View style={{
