@@ -15,6 +15,12 @@ Aplikasi untuk moitoring perkembangan virus covid19 di indonesia menggunakan Rea
 ```
 
 <img src="https://github.com/yoghiyb/RNCovid19/blob/master/screenshoot/SiCovid19_1.png" width="250">
+<img src="https://github.com/yoghiyb/RNCovid19/blob/master/screenshoot/SiCovid19_2.png" width="250">
+<img src="https://github.com/yoghiyb/RNCovid19/blob/master/screenshoot/SiCovid19_4.png" width="250">
+<img src="https://github.com/yoghiyb/RNCovid19/blob/master/screenshoot/SiCovid19_5.png" width="250">
+<img src="https://github.com/yoghiyb/RNCovid19/blob/master/screenshoot/SiCovid19_6.png" width="250">
+<img src="https://github.com/yoghiyb/RNCovid19/blob/master/screenshoot/SiCovid19_7.png" width="250">
+<img src="https://github.com/yoghiyb/RNCovid19/blob/master/screenshoot/SiCovid19_10.png" width="250">
 
 ## API
 - [https://indonesia-covid-19.mathdro.id/api](https://indonesia-covid-19.mathdro.id/api)
